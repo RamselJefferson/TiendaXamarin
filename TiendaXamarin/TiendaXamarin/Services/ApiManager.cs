@@ -29,29 +29,49 @@ namespace TiendaXamarin.Services
             return handler;
         }
 
-        public async  Task<ObservableCollection<Items>> GetItems()
+        
+
+        public async  Task<ObservableCollection<Items>> GetItems(string search = "")
         {
-            HttpClientHandler insecureHandler = GetInsecureHandler();
-            HttpClient client = new HttpClient(insecureHandler);
-
-
-
+           
 
             try
             {
-                var response = await client.GetAsync("https://192.168.0.104:7126/Items");
-
-                if (response.IsSuccessStatusCode)
+                HttpClientHandler insecureHandler = GetInsecureHandler();
+                HttpClient client = new HttpClient(insecureHandler);
+                if (string.IsNullOrEmpty(search))
                 {
-                    var content = await response.Content.ReadAsStringAsync();
-                    ObservableCollection<Items> items = JsonConvert.DeserializeObject<ObservableCollection<Items>>(content);
-                    return items;
+                    var response = await client.GetAsync("https://192.168.0.100:8080/Items");
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var content = await response.Content.ReadAsStringAsync();
+                        ObservableCollection<Items> items = JsonConvert.DeserializeObject<ObservableCollection<Items>>(content);
+                        return items;
+                    }
+                    else
+                    {
+                        
+                        return null;
+                    }
                 }
                 else
                 {
-                    // Manejar el caso de respuesta no exitosa
-                    return null;
+                    var response = await client.GetAsync($"https://192.168.0.100:8080/Items/SearchItemsFilter?search={search}");
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var content = await response.Content.ReadAsStringAsync();
+                        ObservableCollection<Items> items = JsonConvert.DeserializeObject<ObservableCollection<Items>>(content);
+                        return items;
+                    }
+                    else
+                    {
+                        
+                        return null;
+                    }
                 }
+               
             }
             catch (Exception ex)
             {
@@ -60,6 +80,8 @@ namespace TiendaXamarin.Services
             }
 
         }
+
+
    
 
 

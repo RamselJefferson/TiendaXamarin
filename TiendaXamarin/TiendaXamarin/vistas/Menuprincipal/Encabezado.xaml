@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TiendaXamarin.vistas.Menuprincipal.Encabezado">
+             xmlns:b="clr-namespace:Xamarin.Forms.Behaviors;assembly=Xamarin.Forms.Behaviors"
+             x:Class="TiendaXamarin.vistas.Menuprincipal.Encabezado"
+             >
     <Grid>
         <StackLayout >
             <StackLayout Orientation="Horizontal"
@@ -30,12 +32,8 @@
                    HasShadow="False"
                    Padding="10">
                 <StackLayout Orientation="Horizontal">
-                    <Image Source="https://i.ibb.co/tbZGtSV/lupa.png" HeightRequest="25"/>
-                    <Label Text="Buscar..."
-                           VerticalOptions="Center"
-                           TextColor="#d1d4df"
-                           FontAttributes="Bold"
-                           HorizontalOptions="FillAndExpand"/>
+
+                    <SearchBar x:Name="searchBar" Placeholder="Buscar..." TextChanged="OnSearchBarTextChanged" />
 
                 </StackLayout>
             </Frame>

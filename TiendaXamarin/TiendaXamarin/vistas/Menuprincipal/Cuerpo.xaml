@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TiendaXamarin.vistas.Menuprincipal.Cuerpo">
+
+    <ScrollView Padding="12">
+        
+        <Frame CornerRadius="12"
+               HasShadow="False">
+
+            <StackLayout Margin="0,0,0,0"
+                         HorizontalOptions="Center">
+                <Image Source="{Binding Imagen}"/>
+                <Label Text="{Binding Descripcion}"
+                       FontAttributes="Bold"
+                       FontSize="20"
+                       TextColor="Black"/>
+                <Label Text="Hot y Spicy"
+                       />
+                <Label Text="{Binding Precio}" TextColor="#EA6A88"
+                       FontSize="24"
+                       FontAttributes="Bold"/>
+            </StackLayout>
+            
+        </Frame>
+        
+    </ScrollView>
+    
+</ContentView>

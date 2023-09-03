@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TiendaXamarin.vistas.Menuprincipal.Encabezado">
+    <Grid>
+        <StackLayout >
+            <StackLayout Orientation="Horizontal"
+                        HorizontalOptions="FillAndExpand">
+                <Frame HasShadow="False"
+                       CornerRadius="60"
+                       Padding="15">
+                    <Image Source="drawable/menu.png"
+                           HeightRequest="28"/> 
+                </Frame>
+                
+                <Label Text="MDFOOD" 
+                       FontAttributes="Bold"
+                       Margin="0,15,0,0"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="20"/>
+                
+                <Frame HasShadow="False"
+                       CornerRadius="60"
+                       Padding="15">
+                    <Image HeightRequest="25" Source="drawable/carritodecompras.png"/>
+                </Frame> 
+            </StackLayout>
+            
+            <Frame CornerRadius="50"
+                   HasShadow="False"
+                   Padding="10">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="https://i.ibb.co/tbZGtSV/lupa.png" HeightRequest="25"/>
+                    <Label Text="Buscar..."
+                           VerticalOptions="Center"
+                           TextColor="#d1d4df"
+                           FontAttributes="Bold"
+                           HorizontalOptions="FillAndExpand"/>
+
+                </StackLayout>
+            </Frame>
+     
+        </StackLayout>
+    </Grid>
+</ContentView>

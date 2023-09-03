@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TiendaXamarin.vistas.Menuprincipal.Menuprincipal"
+             xmlns:vistas="clr-namespace:TiendaXamarin.vistas.Menuprincipal">
+
+    <StackLayout>
+    <CollectionView ItemsSource="{Binding itemsList}">
+                <CollectionView.Header>
+                <vistas:Encabezado/>
+            </CollectionView.Header>
+                <CollectionView.ItemsLayout>
+                <GridItemsLayout Span="2"
+                                 Orientation="Vertical">
+                </GridItemsLayout>
+                </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <vistas:Cuerpo/>
+                </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        <vistas:Piepagina/>
+    </StackLayout>
+    
+</ContentPage>

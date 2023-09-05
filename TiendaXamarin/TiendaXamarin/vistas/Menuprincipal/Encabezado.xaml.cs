@@ -19,31 +19,23 @@ namespace TiendaXamarin.vistas.Menuprincipal
     public partial class Encabezado : ContentView
     {
 
-
         private ItemsViewModel items;
-
-
-
 
         public Encabezado()
         {
             
             InitializeComponent();
-            items = new ItemsViewModel();
-
 
         }
-       
-
-     
-
+        
         private async void OnSearchBarTextChanged(object sender, TextChangedEventArgs e)
        {
             string searchTerm = e.NewTextValue.ToLower();
 
             if (!string.IsNullOrWhiteSpace(searchTerm))
             {
-                items.GetItems(searchTerm);
+                items = new ItemsViewModel(searchTerm);
+
             }
            
         }

@@ -17,31 +17,33 @@ namespace TiendaXamarin.Ds
         private readonly ApiManager apiManager;
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private ObservableCollection<Items> ItemsList;
-        public ObservableCollection<Items> itemsList { get => ItemsList; set { ItemsList = value; OnPropertyChanged(nameof(itemsList)); }  }
+        private List<Items> _itemList;
+        public List<Items> itemsList { get => _itemList; set { _itemList = value; OnPropertyChanged(); }  }
 
-        public ItemsViewModel()
+        public ItemsViewModel(string item = "")
         {
             apiManager = new ApiManager();
-            GetItems();
+            GetItems(item);
         }
 
 
 
         
 
-        public async Task<ObservableCollection<Items>> GetItems(string prueba = "")
+        public async Task<List<Items>> GetItems(string prueba = "")
         {
             if (string.IsNullOrEmpty(prueba))
             {
-                itemsList = await apiManager.GetItems();
-                return itemsList;
+                _itemList = await apiManager.GetItems();
+                return _itemList;
                 
             }
             else
             {
-                 itemsList = await apiManager.GetItems(prueba);
-                return itemsList;
+                var list = await apiManager.GetItems(prueba);
+                _itemList.Clear();
+                _itemList.AddRange(list);
+                return _itemList;
             }
 
         }

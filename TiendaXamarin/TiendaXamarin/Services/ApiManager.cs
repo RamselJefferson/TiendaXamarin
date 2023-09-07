@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Amazon.Runtime.Internal.Endpoints.StandardLibrary;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,7 +15,8 @@ namespace TiendaXamarin.Services
 {
     public class ApiManager
     {
-        private HttpClient client1;
+
+
 
 
         private HttpClientHandler GetInsecureHandler()
@@ -31,7 +33,7 @@ namespace TiendaXamarin.Services
 
         
 
-        public async  Task<List<Items>> GetItems(string search = "")
+        public  List<Items> GetItems(string search = "")
         {
            
 
@@ -41,12 +43,12 @@ namespace TiendaXamarin.Services
                 HttpClient client = new HttpClient(insecureHandler);
                 if (string.IsNullOrEmpty(search))
                 {
-                    var response = await client.GetAsync("https://10.0.20.55:44325/Items");
+                    var response = client.GetAsync("http://10.0.20.55:44325/Items").GetAwaiter().GetResult();
 
                     if (response.IsSuccessStatusCode)
                     {
-                        var content = await response.Content.ReadAsStringAsync();
-                        List<Items> items = JsonConvert.DeserializeObject<List<Items>>(content);
+                        var content = response.Content.ReadAsStringAsync();
+                        List<Items> items = JsonConvert.DeserializeObject<List<Items>>(content.Result);
                         return items;
                     }
                     else
@@ -57,12 +59,12 @@ namespace TiendaXamarin.Services
                 }
                 else
                 {
-                    var response = await client.GetAsync($"https://10.0.20.55:44325/Items/SearchItemsFilter?search={search}");
+                    var response =  client.GetAsync($"http://10.0.20.55:44325/Items/SearchItemsFilter?search={search}").GetAwaiter().GetResult();
 
                     if (response.IsSuccessStatusCode)
                     {
-                        var content = await response.Content.ReadAsStringAsync();
-                        List<Items> items = JsonConvert.DeserializeObject<List<Items>>(content);
+                        var content =  response.Content.ReadAsStringAsync();
+                        List<Items> items = JsonConvert.DeserializeObject<List<Items>>(content.Result);
                         return items;
                     }
                     else

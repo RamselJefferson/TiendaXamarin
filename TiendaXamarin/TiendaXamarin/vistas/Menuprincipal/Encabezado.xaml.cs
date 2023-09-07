@@ -6,9 +6,10 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using TiendaXamarin.Droid;
 using TiendaXamarin.Ds;
 using TiendaXamarin.Modelo;
-using TiendaXamarin.Modelo.Interface;
+
 using TiendaXamarin.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -19,11 +20,11 @@ namespace TiendaXamarin.vistas.Menuprincipal
     public partial class Encabezado : ContentView
     {
 
-        private ItemsViewModel items;
+        
 
         public Encabezado()
         {
-            
+       
             InitializeComponent();
 
         }
@@ -34,7 +35,8 @@ namespace TiendaXamarin.vistas.Menuprincipal
 
             if (!string.IsNullOrWhiteSpace(searchTerm))
             {
-                items = new ItemsViewModel(searchTerm);
+                 ItemsViewModel.Instance().GetItems(searchTerm);
+               
 
             }
            

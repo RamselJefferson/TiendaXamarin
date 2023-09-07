@@ -6,12 +6,23 @@ using Android.Runtime;
 using Android.OS;
 using System.Net;
 using System.Net.Http;
+using TiendaXamarin.Services;
 
+using Xamarin.Forms;
+using System.ComponentModel;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using TiendaXamarin.Modelo;
+using TiendaXamarin.Droid;
+
+[assembly: Dependency(typeof(IitemsViewModel))]
 namespace TiendaXamarin.Droid
 {
     [Activity(Label = "TiendaXamarin", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+       
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             
@@ -39,6 +50,11 @@ namespace TiendaXamarin.Droid
                 return errors == System.Net.Security.SslPolicyErrors.None;
             };
             return handler;
+        }
+
+        public Task<List<Items>> GetItems(string prueba = "")
+        {
+            throw new NotImplementedException();
         }
     }
 }

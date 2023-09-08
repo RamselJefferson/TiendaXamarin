@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <Folder Include="Datos\" />
+    <Folder Include="ViewModels\" />
     <Folder Include="VistaModelo\" />
   </ItemGroup>
 

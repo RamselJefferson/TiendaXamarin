@@ -5,12 +5,14 @@
 
     <ScrollView Padding="12">
         
-        <Frame CornerRadius="12"
+        <Frame CornerRadius="40"
                HasShadow="False">
 
             <StackLayout Margin="0,0,0,0"
-                         HorizontalOptions="Center">
-                <Image Source="{Binding Imagen}"/>
+                         HorizontalOptions="Center"  >
+                <Frame BackgroundColor="Transparent" CornerRadius="100" HasShadow="False" HeightRequest="100" WidthRequest="125">
+                    <Image Aspect="AspectFill" Source="{Binding Imagen}"/>
+                </Frame>
                 <Label Text="{Binding Descripcion}"
                        FontAttributes="Bold"
                        FontSize="20"

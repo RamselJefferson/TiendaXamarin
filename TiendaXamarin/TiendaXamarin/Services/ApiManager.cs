@@ -43,7 +43,7 @@ namespace TiendaXamarin.Services
                 HttpClient client = new HttpClient(insecureHandler);
                 if (string.IsNullOrEmpty(search))
                 {
-                    var response = client.GetAsync("https://192.168.0.105:8080/Items").GetAwaiter().GetResult();
+                    var response = client.GetAsync("http://10.0.20.55:44325/Items").GetAwaiter().GetResult();
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -59,7 +59,7 @@ namespace TiendaXamarin.Services
                 }
                 else
                 {
-                    var response =  client.GetAsync($"https://192.168.0.105:8080/Items/SearchItemsFilter?search={search}").GetAwaiter().GetResult();
+                    var response =  client.GetAsync($"http://10.0.20.55:44325/Items/SearchItemsFilter?search={search}").GetAwaiter().GetResult();
 
                     if (response.IsSuccessStatusCode)
                     {

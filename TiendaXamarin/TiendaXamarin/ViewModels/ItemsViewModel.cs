@@ -75,7 +75,7 @@ namespace TiendaXamarin.Ds
                        
                     }
 
-                     // Pequeño retraso para la animación
+        
                 }
                
                 return itemsList;

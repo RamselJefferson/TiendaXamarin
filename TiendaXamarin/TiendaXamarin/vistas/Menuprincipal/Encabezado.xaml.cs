@@ -17,34 +17,33 @@ using Xamarin.Forms.Xaml;
 namespace TiendaXamarin.vistas.Menuprincipal
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Encabezado : ContentView
+    public partial class Encabezado : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        
-
+        private string _search;
+        public string search { get => _search; set { _search = value; OnPropertyChanged(); } }
         public Encabezado()
         {
+            BindingContext = this;
        
             InitializeComponent();
 
         }
         
-        private async void OnSearchBarTextChanged(object sender, TextChangedEventArgs e)
-       {
-            string searchTerm = e.NewTextValue.ToLower();
 
 
-            await Task.Delay(1200);
-            ItemsViewModel.Instance().GetItems(searchTerm);
-            
+        private   void Button_Clicked(object sender, EventArgs e)
+        {
 
-
-
-
-
-
+            ItemsViewModel.Instance().GetItems(search);
         }
 
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
     }
 }

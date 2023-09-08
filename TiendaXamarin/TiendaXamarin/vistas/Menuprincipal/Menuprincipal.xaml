@@ -4,7 +4,7 @@
              x:Class="TiendaXamarin.vistas.Menuprincipal.Menuprincipal"
              xmlns:vistas="clr-namespace:TiendaXamarin.vistas.Menuprincipal">
 
-    <StackLayout>
+    <StackLayout BackgroundColor="#F9F5F5">
     <CollectionView ItemsSource="{Binding itemsList}" IsVisible="true">
                 <CollectionView.Header>
                 <vistas:Encabezado/>

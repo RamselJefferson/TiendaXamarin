@@ -33,13 +33,16 @@ namespace TiendaXamarin.vistas.Menuprincipal
        {
             string searchTerm = e.NewTextValue.ToLower();
 
-            if (!string.IsNullOrWhiteSpace(searchTerm))
-            {
-                 ItemsViewModel.Instance().GetItems(searchTerm);
-               
 
-            }
-           
+            await Task.Delay(1200);
+            ItemsViewModel.Instance().GetItems(searchTerm);
+            
+
+
+
+
+
+
         }
 
 

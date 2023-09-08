@@ -5,7 +5,7 @@
              xmlns:vistas="clr-namespace:TiendaXamarin.vistas.Menuprincipal">
 
     <StackLayout>
-    <CollectionView ItemsSource="{Binding itemsList}">
+    <CollectionView ItemsSource="{Binding itemsList}" IsVisible="true">
                 <CollectionView.Header>
                 <vistas:Encabezado/>
             </CollectionView.Header>

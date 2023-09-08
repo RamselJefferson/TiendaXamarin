@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Amazon.DynamoDBv2.DocumentModel;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,11 +23,11 @@ namespace TiendaXamarin.Ds
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        private static List<Items> _itemList;
+        private ObservableCollection<Items> _itemList;
         private readonly ApiManager api;
 
         private static ItemsViewModel _instance;
-        public List<Items> itemsList { get => _itemList; set { _itemList = value;  OnPropertyChanged(); }  }
+        public ObservableCollection<Items> itemsList { get => _itemList; set { _itemList = value;  OnPropertyChanged(); }  }
 
         public ItemsViewModel()
         {
@@ -44,31 +46,41 @@ namespace TiendaXamarin.Ds
 
         public static ItemsViewModel Instance()
         {
-           
             return _instance;
         }
 
 
-        public List<Items> GetItems(string prueba = "")
+        public ObservableCollection<Items> GetItems(string prueba = "")
         {
-
-           
-            
+    
             if (string.IsNullOrEmpty(prueba))
             {
 
-                var itemsListPrueba = api.GetItems();
-                itemsList = itemsListPrueba;
-                return itemsListPrueba;
+                itemsList = api.GetItems();
+                return itemsList;
                 
             }
             else
             {
-                var list = api.GetItems(prueba);
-                
-                itemsList = list;
+
+                itemsList.Clear();
+                var list = api.GetItems(prueba);  
+
+                if(list != null)
+                {
+                    foreach (var item in list)
+                    {
+                        Task.Delay(100);
+                        itemsList.Add(item);
+                       
+                    }
+
+                     // Pequeño retraso para la animación
+                }
+               
                 return itemsList;
             }
+
 
         }
 

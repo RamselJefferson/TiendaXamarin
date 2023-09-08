@@ -33,7 +33,7 @@ namespace TiendaXamarin.Services
 
         
 
-        public  List<Items> GetItems(string search = "")
+        public ObservableCollection<Items> GetItems(string search = "")
         {
            
 
@@ -43,12 +43,12 @@ namespace TiendaXamarin.Services
                 HttpClient client = new HttpClient(insecureHandler);
                 if (string.IsNullOrEmpty(search))
                 {
-                    var response = client.GetAsync("http://10.0.20.55:44325/Items").GetAwaiter().GetResult();
+                    var response = client.GetAsync("https://192.168.0.105:8080/Items").GetAwaiter().GetResult();
 
                     if (response.IsSuccessStatusCode)
                     {
                         var content = response.Content.ReadAsStringAsync();
-                        List<Items> items = JsonConvert.DeserializeObject<List<Items>>(content.Result);
+                        ObservableCollection<Items> items = JsonConvert.DeserializeObject<ObservableCollection<Items>>(content.Result);
                         return items;
                     }
                     else
@@ -59,12 +59,12 @@ namespace TiendaXamarin.Services
                 }
                 else
                 {
-                    var response =  client.GetAsync($"http://10.0.20.55:44325/Items/SearchItemsFilter?search={search}").GetAwaiter().GetResult();
+                    var response =  client.GetAsync($"https://192.168.0.105:8080/Items/SearchItemsFilter?search={search}").GetAwaiter().GetResult();
 
                     if (response.IsSuccessStatusCode)
                     {
                         var content =  response.Content.ReadAsStringAsync();
-                        List<Items> items = JsonConvert.DeserializeObject<List<Items>>(content.Result);
+                        ObservableCollection<Items> items = JsonConvert.DeserializeObject<ObservableCollection<Items>>(content.Result);
                         return items;
                     }
                     else

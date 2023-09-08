@@ -3,16 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TiendaXamarin.vistas.Menuprincipal.Encabezado"
              >
-    <Grid>
-        <StackLayout >
+    <Grid Padding="15,0,15,0">
+        <StackLayout>
             <StackLayout Orientation="Horizontal"
                         HorizontalOptions="FillAndExpand">
-                <Frame HasShadow="False"
-                       CornerRadius="60"
-                       Padding="15">
-                    <Image Source="drawable/menu.png"
-                           HeightRequest="28"/> 
-                </Frame>
+               
+                    <Image Margin="15" Source="drawable/menu.png"
+                           HeightRequest="23"/> 
+                
                 
                 <Label Text="MDFOOD" 
                        FontAttributes="Bold"
@@ -20,20 +18,18 @@
                        HorizontalOptions="CenterAndExpand"
                        FontSize="20"/>
                 
-                <Frame HasShadow="False"
-                       CornerRadius="60"
-                       Padding="15">
-                    <Image HeightRequest="25" Source="drawable/carritodecompras.png"/>
-                </Frame> 
+
+                    <Image Margin="15" HeightRequest="25" Source="drawable/carritodecompras.png"/>
+              
             </StackLayout>
             
             <Frame CornerRadius="50"
                    HasShadow="False"
-                   Padding="10">
-                <StackLayout Orientation="Horizontal">
+                   Padding="15,0,0,0" Margin="15">
+                <StackLayout   Orientation="Horizontal">
 
-                    <SearchBar x:Name="searchBar" Placeholder="Buscar..." TextChanged="OnSearchBarTextChanged" />
-
+                    
+                    <Entry   x:Name="searchBar" Placeholder="Buscar..." TextChanged="OnSearchBarTextChanged" WidthRequest="300" />
                 </StackLayout>
             </Frame>
      

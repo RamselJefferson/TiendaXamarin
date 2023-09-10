@@ -23,11 +23,11 @@ namespace TiendaXamarin.Ds
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        private ObservableCollection<Items> _itemList;
+        private ObservableCollection<vwItems> _itemList;
         private readonly ApiManager api;
 
         private static ItemsViewModel _instance;
-        public ObservableCollection<Items> itemsList { get => _itemList; set { _itemList = value;  OnPropertyChanged(); }  }
+        public ObservableCollection<vwItems> itemsList { get => _itemList; set { _itemList = value;  OnPropertyChanged(); }  }
 
         public ItemsViewModel()
         {
@@ -50,7 +50,7 @@ namespace TiendaXamarin.Ds
         }
 
 
-        public ObservableCollection<Items> GetItems(string prueba = "")
+        public ObservableCollection<vwItems> GetItems(string prueba = "")
         {
     
             if (string.IsNullOrEmpty(prueba))

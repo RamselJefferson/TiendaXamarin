@@ -3,25 +3,48 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TiendaXamarin.vistas.Menuprincipal.Cuerpo">
 
-    <ScrollView Padding="12">
+    <ScrollView Padding="12"
+                >
         
-        <Frame CornerRadius="40"
-               HasShadow="False">
+        <Frame CornerRadius="15"
+               HasShadow="False"
+               HeightRequest="280"
+               Padding="0" >
 
-            <StackLayout Margin="0,0,0,0"
+            <StackLayout 
                          HorizontalOptions="Center"  >
-                <Frame BackgroundColor="Transparent" CornerRadius="100" HasShadow="False" HeightRequest="100" WidthRequest="125">
-                    <Image Aspect="AspectFill" Source="{Binding Imagen}"/>
-                </Frame>
-                <Label Text="{Binding Descripcion}"
+                
+                    <Image Aspect="AspectFill" HeightRequest="110" Source="{Binding Imagen}" Margin="0,0,0,0"
+                           />
+
+                <Grid Margin="9,0,0,0" VerticalOptions="CenterAndExpand">
+
+                    
+                        <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                            
+                        </Grid.RowDefinitions>
+
+                        <Label Text="{Binding ItemDescripcion}"
                        FontAttributes="Bold"
+                      
+                               VerticalOptions="Start"
                        FontSize="20"
-                       TextColor="Black"/>
-                <Label Text="Hot y Spicy"
-                       />
-                <Label Text="{Binding Precio}" TextColor="#EA6A88"
+                       TextColor="Black" 
+                    Grid.Row="1"/>
+                <Label Text="{Binding CatDescripcion}"
+                     
+                       VerticalOptions="Center"
+                       Grid.Row="2"/>
+                <Label Text="{Binding Precio}"  
+                       TextColor="#EA6A88"
+                       VerticalOptions="End"
                        FontSize="24"
-                       FontAttributes="Bold"/>
+                       FontAttributes="Bold"
+                       Grid.Row="3"/>
+                </Grid>
             </StackLayout>
             
         </Frame>

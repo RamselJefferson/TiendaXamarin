@@ -2,11 +2,13 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TiendaXamarin.vistas.Menuprincipal.Encabezado"
+             
              >
     <Grid Padding="10,0,15,0">
         <StackLayout>
             <StackLayout Orientation="Horizontal"
                         HorizontalOptions="FillAndExpand">
+                
                
                     <Image Margin="15" Source="drawable/menu.png"
                            HeightRequest="23"/> 
@@ -33,7 +35,8 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                    <Entry Placeholder="Buscar" Text="{Binding search,  Mode=TwoWay}" />
+                    <Entry Placeholder="Buscar" Text="{Binding search,  Mode=TwoWay}"  BackgroundColor="Transparent" Opacity="0.6"/>
+
                     <Button BackgroundColor="#EA6A88" WidthRequest="60" TextColor="White" Grid.Column="1" Text="B" Clicked="Button_Clicked" 
                          HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                         />
